@@ -5,9 +5,11 @@ Given an array of integers `nums` and an integer `target`, return the indices of
 
 ## Requirements
 - **Language:** C++ 20 with STL `vector`
+
 - **Implementations:**
     - `TwoSumArray`: Brute force O(n²) approach using nested loops
     - `TwoSumHashTable`: Optimized O(n) approach using hash map for single pass lookup
+    
 - **Test Cases:**
     - Basic case: `[2,7,11,15]`, target `9` → `[0,1]`
     - Negative numbers: `[-1,-2,-3]`, target `-5` → `[0,2]`

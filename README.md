@@ -9,7 +9,7 @@ Given an array of integers `nums` and an integer `target`, return the indices of
 - **Implementations:**
     - `TwoSumArray`: Brute force O(n²) approach using nested loops
     - `TwoSumHashTable`: Optimized O(n) approach using hash map for single pass lookup
-    
+
 - **Test Cases:**
     - Basic case: `[2,7,11,15]`, target `9` → `[0,1]`
     - Negative numbers: `[-1,-2,-3]`, target `-5` → `[0,2]`
@@ -25,4 +25,7 @@ Given an array of integers `nums` and an integer `target`, return the indices of
 - `2 <= nums.length <= 10^4`
 - `-10^9 <= nums[i] <= 10^9`
 - `-10^9 <= target <= 10^9`
+
+## Detail about GitHub Actions
+
 

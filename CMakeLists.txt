@@ -27,3 +27,8 @@ add_test(
     NAME TwoSumTests
     COMMAND test_runner
 )
+# Copy the test data file to the build folder automatically
+configure_file(tests/tst.txt tst.txt COPYONLY)
+
+# Build the runner
+add_executable(test_runner tests/test_runner.cpp src/twosum.cpp)

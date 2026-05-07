@@ -1,18 +1,23 @@
 #include <iostream>
 #include <vector>
 
-using namespace std;
+#include "twosum.h"
 
-vector<int> twoSum_hash(const vector<int>& nums, int target);
+using namespace std;
 
 int main() {
     vector<int> nums = {2, 7, 11, 15};
 
-    auto res = twoSum_hash(nums, 9);
+    auto result = twoSum_hash(nums, 9);
 
-    if (!res.empty()) {
-        cout << "Hash Success: ["
-             << res[0] << "," << res[1] << "]\n";
+    if (!result.empty()) {
+        cout << "Result: ["
+             << result[0]
+             << ", "
+             << result[1]
+             << "]\n";
+    } else {
+        cout << "No solution found.\n";
     }
 
     return 0;

@@ -68,39 +68,30 @@ void run_test(
         exit(1);
     }
 }
-
 int main() {
     cout << "--- Running Two Sum Tests ---\n";
 
-    run_test(
-        "Standard",
-        {2, 7, 11, 15},
-        9,
-        true
-    );
+    // 1. SIMPLE CASES
+    run_test("Standard", {2, 7, 11, 15}, 9, true);
+    run_test("Large Gap", {1, 100}, 101, true);
 
-    run_test(
-        "Negative Numbers",
-        {-1, -2, -3, -4},
-        -5,
-        true
-    );
+    // 2. EDGE CASES
+    run_test("Negative Numbers", {-1, -2, -3, -4}, -5, true);
+    run_test("Duplicates", {3, 3}, 6, true);
+    run_test("Zero Sum", {0, 5, -5, 0}, 0, true);
+    run_test("No Solution", {1, 2, 3}, 10, false);
 
-    run_test(
-        "Duplicates",
-        {3, 3},
-        6,
-        true
-    );
+    // 3. SINGLE AMOUNT / CONSTRAINTS
+    run_test("Single Element", {5}, 5, false);
+    run_test("Empty Array", {}, 0, false);
 
-    run_test(
-        "No Solution",
-        {1, 2, 3},
-        10,
-        false
-    );
+    // 4. STRESS TEST
+    // Generates 10,000 elements: [0, 1, 2, ... 9999]
+    // Target: 19997 (Last two elements: 9998 + 9999)
+    vector<int> stress_nums;
+    for (int i = 0; i < 10000; ++i) stress_nums.push_back(i);
+    run_test("Stress Test (N=10,000)", stress_nums, 19997, true);
 
-    cout << "\nAll tests passed.\n";
-
+    cout << "\nAll tests passed successfully.\n";
     return 0;
 }

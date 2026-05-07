@@ -3,21 +3,27 @@
 
 ## TwoSum Implementation
 
-**Purpose:** Solves the classic LeetCode Two Sum problem using a brute-force approach.
+**Purpose:** Solves the classic LeetCode Two Sum problem by finding two distinct indices of an array where the elements sum to a target value using a brute-force approach.
 
-**Algorithm:** Nested loop that checks all pairs of numbers to find two that sum to a target value.
+**Algorithm:** Nested loop that iterates through all unique pairs of elements, comparing their sum against the target value until a match is found or all pairs are exhausted.
 
 **Use Case:**
-- Educational purposes to understand basic problem-solving techniques
-- Small datasets where O(n²) time complexity is acceptable
-- Scenarios where simplicity is prioritized over performance
+- Educational purposes to demonstrate fundamental array iteration and comparison techniques
+- Interview preparation for understanding problem-solving methodology
+- Small datasets (fewer than 1,000 elements) where O(n²) time complexity is acceptable
+- Prototyping and initial solution development before optimization
+- Systems with extremely limited memory where space efficiency is critical
 
 **Pros:**
-- Easy to understand and implement
-- No additional space overhead (O(1) space)
+- Straightforward logic that is easy to understand and debug
+- No additional space overhead beyond input storage (O(1) auxiliary space)
+- No hash table initialization overhead
+- Good for teaching nested loop concepts
 
 **Cons:**
-- Inefficient for large datasets (O(n²) time complexity)
+- Quadratic time complexity O(n²) makes it impractical for large datasets
+- Scales poorly as input size grows
+- Not suitable for performance-sensitive applications
 
 ---
 

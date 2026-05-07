@@ -9,5 +9,5 @@ add_executable(twosum src/twosum.cpp)
 
 # Testing Executable (Commented out until Step 2)
 enable_testing()
-add_executable(test_runner tests/test_twosum.cpp)
+add_executable(test_runner tests/test_twosum.cpp src/twosum.cpp)
 add_test(NAME TwoSumTests COMMAND test_runner)

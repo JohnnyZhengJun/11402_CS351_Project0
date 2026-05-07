@@ -2,54 +2,63 @@
 #include <vector>
 #include <fstream>
 #include <string>
+#include <limits>
 #include "../src/twosum.h"
 
 using namespace std;
 
-// Validates if the returned indices are correct
+// Helper: Validates index safety and mathematical correctness
 bool is_valid(const vector<int>& nums, int target, const vector<int>& res) {
     if (res.empty()) return false;
     if (res.size() != 2 || res[0] == res[1]) return false;
+    if (res[0] >= (int)nums.size() || res[1] >= (int)nums.size()) return false;
     return nums[res[0]] + nums[res[1]] == target;
 }
 
 int main() {
-    ifstream file("tst.txt");
+    ifstream file("test_cases.txt");
     if (!file.is_open()) {
-        cerr << "Error: Could not open tst.txt. Ensure it is in the build directory.\n";
+        cerr << "CRITICAL ERROR: test_cases.txt not found.\n";
         return 1;
     }
 
     string category;
-    int target, expect_val, n, temp;
-    int pass_count = 0, total_count = 0;
+    int target, expect_success, n, val;
+    int total = 0, passed = 0;
 
-    cout << "--- Executing Data-Driven Pipeline (tst.txt) ---\n";
+    cout << "--- Starting Data-Driven Two Sum Test Suite ---\n";
 
-    while (file >> category >> target >> expect_val >> n) {
+    while (file >> category) {
+        // Handle comment lines
+        if (category[0] == '#') {
+            file.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+
+        if (!(file >> target >> expect_success >> n)) break;
+
         vector<int> nums;
+        nums.reserve(n);
         for (int i = 0; i < n; ++i) {
-            if (file >> temp) nums.push_back(temp);
+            if (file >> val) nums.push_back(val);
         }
 
-        bool expect_sol = (expect_val == 1);
-        auto r1 = twoSum_array(nums, target);
-        auto r2 = twoSum_hash(nums, target);
+        auto res_arr = TwoSumArray(nums, target);
+        auto res_hash = TwoSumHashTable(nums, target);
 
-        bool ok1 = expect_sol ? is_valid(nums, target, r1) : r1.empty();
-        bool ok2 = expect_sol ? is_valid(nums, target, r2) : r2.empty();
+        bool expect_solution = (expect_success == 1);
+        bool arr_ok = expect_solution ? is_valid(nums, target, res_arr) : res_arr.empty();
+        bool hash_ok = expect_solution ? is_valid(nums, target, res_hash) : res_hash.empty();
 
-        if (ok1 && ok2) {
-            pass_count++;
+        if (arr_ok && hash_ok) {
+            passed++;
         } else {
-            cerr << "[FAIL] " << category << " case failed at index " << total_count << "\n";
-            return 1; 
+            cerr << "[FAIL] Category: " << category << " | Case #" << total + 1 << "\n";
+            return 1; // Strict fail-fast discipline
         }
-        total_count++;
+        total++;
     }
 
-    cout << "Successfully processed " << total_count << " test cases.\n";
-    cout << "Final Result: " << pass_count << "/" << total_count << " Passed.\n";
-
+    cout << "Processed " << total << " unique scenarios. ALL TESTS PASSED.\n";
     return 0;
 }

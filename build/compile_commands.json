@@ -1,0 +1,20 @@
+[
+{
+  "directory": "/Users/johnnyzheng/GitRepo/11402_CS351_Project0/build",
+  "command": "/usr/bin/clang++ -g -std=gnu++20 -arch arm64 -o CMakeFiles/twosum_lib.dir/src/twosum.cpp.o -c /Users/johnnyzheng/GitRepo/11402_CS351_Project0/src/twosum.cpp",
+  "file": "/Users/johnnyzheng/GitRepo/11402_CS351_Project0/src/twosum.cpp",
+  "output": "/Users/johnnyzheng/GitRepo/11402_CS351_Project0/build/CMakeFiles/twosum_lib.dir/src/twosum.cpp.o"
+},
+{
+  "directory": "/Users/johnnyzheng/GitRepo/11402_CS351_Project0/build",
+  "command": "/usr/bin/clang++ -g -std=gnu++20 -arch arm64 -o CMakeFiles/twosum_app.dir/src/main.cpp.o -c /Users/johnnyzheng/GitRepo/11402_CS351_Project0/src/main.cpp",
+  "file": "/Users/johnnyzheng/GitRepo/11402_CS351_Project0/src/main.cpp",
+  "output": "/Users/johnnyzheng/GitRepo/11402_CS351_Project0/build/CMakeFiles/twosum_app.dir/src/main.cpp.o"
+},
+{
+  "directory": "/Users/johnnyzheng/GitRepo/11402_CS351_Project0/build",
+  "command": "/usr/bin/clang++ -g -std=gnu++20 -arch arm64 -o CMakeFiles/two_sum_tests.dir/tests/test_runner.cpp.o -c /Users/johnnyzheng/GitRepo/11402_CS351_Project0/tests/test_runner.cpp",
+  "file": "/Users/johnnyzheng/GitRepo/11402_CS351_Project0/tests/test_runner.cpp",
+  "output": "/Users/johnnyzheng/GitRepo/11402_CS351_Project0/build/CMakeFiles/two_sum_tests.dir/tests/test_runner.cpp.o"
+}
+]

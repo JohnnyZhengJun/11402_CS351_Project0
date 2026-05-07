@@ -1,6 +1,0 @@
-/Users/johnnyzheng/GitRepo/11402_CS351_Project0/build/CMakeFiles/twosum_lib.dir
-/Users/johnnyzheng/GitRepo/11402_CS351_Project0/build/CMakeFiles/twosum_app.dir
-/Users/johnnyzheng/GitRepo/11402_CS351_Project0/build/CMakeFiles/two_sum_tests.dir
-/Users/johnnyzheng/GitRepo/11402_CS351_Project0/build/CMakeFiles/test.dir
-/Users/johnnyzheng/GitRepo/11402_CS351_Project0/build/CMakeFiles/edit_cache.dir
-/Users/johnnyzheng/GitRepo/11402_CS351_Project0/build/CMakeFiles/rebuild_cache.dir

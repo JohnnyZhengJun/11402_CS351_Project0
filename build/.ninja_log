@@ -1,7 +1,0 @@
-# ninja log v7
-3	423	1778149548600992780	CMakeFiles/twosum_app.dir/src/main.cpp.o	bce8ea5f956241a9
-0	423	1778148472965006049	CMakeFiles/twosum_lib.dir/src/twosum.cpp.o	8fb067cdecf2a65f
-1	489	1778148472965476328	CMakeFiles/two_sum_tests.dir/tests/test_runner.cpp.o	e7dbc03ae760bdd2
-424	579	1778148473388958753	libtwosum_lib.a	c8663ea2fa5948ac
-580	620	1778148473544285246	two_sum_tests	2014b697465497a7
-423	465	1778149549020875289	twosum_app	978953564efc8a75

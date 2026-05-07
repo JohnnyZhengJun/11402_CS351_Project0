@@ -1,47 +1,50 @@
+# 02: Software Requirements Specification (SRS)
 
-# Software Requirements Specification (SRS) - TwoSum.cpp
+## 1. Introduction
 
-## 1. Purpose
-Define the functional and non-functional requirements for a C++ implementation of the Two Sum algorithm.
+This document defines the functional and non-functional requirements for the **Two Sum Bootcamp** software suite. It serves as the definitive contract for system capabilities, performance thresholds, and environmental constraints.
 
-## 2. Functional Requirements
+## 2. Functional Requirements (FR)
 
-### FR1: Input Handling
-- Accept an array of integers and a target sum as input.
-- Validate that the array is non-empty.
+### FR-1: Interactive Command Line Interface (CLI)
 
-### FR2: Algorithm Implementation
-- Identify two distinct indices where the values sum to the target.
-- Return the indices of the two numbers.
-- Handle cases where no solution exists.
+* **FR-1.1:** The system shall provide an interactive executable (`twosum_app`) that prompts the user for standard input (`std::cin`).
+* **FR-1.2:** The system shall accept an integer $N$ representing the array size, followed by $N$ integer elements, and finally an integer target sum.
+* **FR-1.3:** The system shall reject invalid array sizes ($N < 2$) with an appropriate error message and a non-zero exit code.
+* **FR-1.4:** The system shall output the correct 0-based indices if a solution exists, or a "No solution found" message if none exists.
 
-### FR3: Output
-- Return a pair of indices or an appropriate null/error indicator.
-- Support multiple solution formats (vector, array, or struct).
+### FR-2: Algorithmic Implementations
 
-## 3. Non-Functional Requirements
+* **FR-2.1:** The system shall implement a brute-force function `TwoSumArray` with a strict $O(n^2)$ time complexity constraint.
+* **FR-2.2:** The system shall implement an optimized function `TwoSumHashTable` using standard library hash maps with an expected $O(n)$ time complexity constraint.
+* **FR-2.3:** Both functions must possess the exact same signature: returning a `std::vector<int>` containing the two valid indices or an empty vector upon failure.
 
-### NFR1: Performance
-- Time complexity: O(n) optimal solution using hash map.
-- Space complexity: O(n) for hash-based approach.
+### FR-3: Data-Driven Test Automation
 
-### NFR2: Constraints
-- Handle arrays up to 10^5 elements.
-- Support integer ranges (including negatives).
-- Process within reasonable memory limits.
+* **FR-3.1:** The system shall provide a secondary executable (`two_sum_tests`) strictly for automated validation.
+* **FR-3.2:** The test runner shall autonomously parse an external data file (`test_cases.txt`) formatted with category labels, expected outcomes, array sizes, and array data.
+* **FR-3.3:** The test runner shall execute *both* algorithmic implementations on every parsed dataset and assert that both return mathematically valid, identical results.
+* **FR-3.4:** The test runner shall employ a "fail-fast" architecture: encountering any mathematical failure or algorithm discrepancy must immediately terminate the program with exit code `1`.
 
-### NFR3: Code Quality
-- Follow C++ best practices and style guidelines.
-- Include error handling for edge cases.
-- Provide unit test coverage.
+## 3. Non-Functional Requirements (NFR)
 
-## 4. Edge Cases
-- Array with fewer than 2 elements.
-- No valid pair exists.
-- Duplicate values in array.
-- Negative numbers and zero.
+### NFR-1: Standard and Compilation
 
-## 5. Acceptance Criteria
-- Algorithm correctly identifies valid pairs.
-- Handles all edge cases gracefully.
-- Meets performance requirements.
+* **NFR-1.1:** The codebase must strictly adhere to the **C++20** standard.
+* **NFR-1.2:** The build system must utilize **CMake** (minimum version 3.15) and generate build files via **Ninja**.
+
+### NFR-2: Performance
+
+* **NFR-2.1:** The hash-table implementation must resolve the 1,000-element Stress cases without inducing pipeline timeouts.
+* **NFR-2.2:** Release builds must utilize `-O3` compiler optimizations (configured via `CMAKE_BUILD_TYPE=Release`).
+
+### NFR-3: Portability & Containerization
+
+* **NFR-3.1:** The software must be compilable natively on macOS (Apple Silicon).
+* **NFR-3.2:** The software must be fully containerized via Docker using `ubuntu:22.04` as the base image.
+* **NFR-3.3:** The containerized build must execute completely isolated from the host OS (enforced via `.dockerignore`).
+
+### NFR-4: Continuous Integration
+
+* **NFR-4.1:** The software must integrate with GitHub Actions.
+* **NFR-4.2:** Commits to the `main` branch or pull requests must trigger an automated build and test sequence via `ctest`.

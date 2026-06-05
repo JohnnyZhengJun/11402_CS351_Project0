@@ -2,7 +2,7 @@
 #include <vector>
 #include <string>
 #include <cstdlib>
-#include "../twosum.h"
+#include "../src/twosum.h"
 
 int main(int argc, char* argv[]) {
     // Enforce strict arity bounds based on the data schema

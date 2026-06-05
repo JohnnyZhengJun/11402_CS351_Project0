@@ -1,44 +1,33 @@
+# 00: Intended Use Statement
 
-# Intended Use
+## 1. Product Description
 
-## TwoSum Implementation
+The **Two Sum Bootcamp** is a dual-mode C++20 software suite designed to solve the classic "Two Sum" algorithmic problem. It provides both an interactive Command Line Interface (CLI) for human users and a robust, data-driven testing executable for automated benchmarking. The system explicitly implements two distinct algorithms to validate correctness and evaluate computational complexity:
 
-**Purpose:** Solves the classic LeetCode Two Sum problem using a brute-force approach.
+* **Array-Based Approach:** $O(n^2)$ time complexity using brute-force iteration.
+* **Hash-Table Approach:** $O(n)$ time complexity using `std::unordered_map`.
 
-**Algorithm:** Nested loop that checks all pairs of numbers to find two that sum to a target value.
+## 2. Target Audience
 
-**Use Case:**
-- Educational purposes to understand basic problem-solving techniques
-- Small datasets where O(n²) time complexity is acceptable
-- Scenarios where simplicity is prioritized over performance
+* **Academic Evaluators:** To review compliance with rigorous C++20 standards, algorithmic correctness, and CI/CD best practices.
+* **Software Engineers:** To utilize as a foundational reference for bootstrapping C++ projects with CMake, Ninja, and Docker integration.
+* **Automated Systems (CI/CD):** Designed to be executed headlessly by GitHub Actions for continuous integration and regression testing.
 
-**Pros:**
-- Easy to understand and implement
-- No additional space overhead (O(1) space)
+## 3. Operational Environment
 
-**Cons:**
-- Inefficient for large datasets (O(n²) time complexity)
+The software is architected to be platform-agnostic but is strictly validated against the following environments:
 
----
+* **Local Development:** macOS (Apple Silicon / ARM64) compiled via Clang/GCC.
+* **Containerized Sandbox:** Ubuntu 22.04 LTS (Docker) ensuring zero dependency leakage.
+* **Continuous Integration:** GitHub Actions (`ubuntu-latest` runner).
 
-## TwoSumHashTable Implementation
+## 4. Intended Operations
 
-**Purpose:** Solves the Two Sum problem using a hash table for optimized performance.
+1. **Interactive Mode (`twosum_app`):** Accepts standard input (`std::cin`) from a user to dynamically define an array size, populate elements, and query a target sum. It defaults to the optimized Hash Table approach for $O(1)$ lookup performance.
+2. **Benchmarking Mode (`two_sum_tests`):** Parses massive external datasets (e.g., thousands of numerical vectors) via `std::ifstream`, bypassing standard input to execute a rigorous suite of simple, edge, constraint, and stress cases. It strictly enforces that both internal algorithms yield identical indices.
 
-**Algorithm:** Single pass through the array, storing seen values in a hash map to achieve O(n) lookup time.
+## 5. Out of Scope
 
-**Use Case:**
-- Production code and performance-critical applications
-- Large datasets where O(n) time complexity is required
-- Real-world scenarios requiring fast duplicate/complement detection
-
-**Pros:**
-- Optimal time complexity: O(n)
-- Fast lookups with hash table
-
-**Cons:**
-- Requires O(n) additional space for the hash table
-
----
-
-**Recommendation:** Use `TwoSumHashTable` for practical applications; use `TwoSum` for learning algorithm fundamentals.
+* Handling floating-point arrays or non-integer inputs.
+* Handling arrays where zero or multiple distinct solutions exist (the specification assumes exactly one valid solution per dataset).
+* Graphical User Interface (GUI) implementations.

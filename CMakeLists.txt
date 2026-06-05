@@ -1,23 +1,16 @@
-cmake_minimum_required(VERSION 3.15)
-project(TwoSumBootcamp)
+# 1. Compile a lightweight, modular test runner
+add_executable(RunSingleTest test_runner.cpp twosum.cpp)
 
-# Language Standard: C++20
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+# 2. Ingest the data file at CMake configure time
+file(STRINGS "test_cases.txt" TEST_LINES)
 
-# Library logic
-add_library(twosum_lib src/twosum.cpp)
-
-# Production App
-add_executable(twosum_app src/main.cpp)
-target_link_libraries(twosum_app twosum_lib)
-
-# Test runner
-enable_testing()
-add_executable(two_sum_tests tests/test_runner.cpp)
-target_link_libraries(two_sum_tests twosum_lib)
-
-# Fetch test data to build directory
-configure_file(test_cases.txt test_cases.txt COPYONLY)
-
-add_test(NAME AllTests COMMAND two_sum_tests)
+# 3. Dynamically register each line as an isolated CTest entity
+set(TEST_ID 1)
+foreach(LINE IN LISTS TEST_LINES)
+    # Skip empty lines to prevent malformed commands
+    if(NOT LINE STREQUAL "")
+        # The unquoted ${LINE} variable expands into individual argv arguments
+        add_test(NAME "TwoSum_Test_${TEST_ID}" COMMAND RunSingleTest ${LINE})
+        math(EXPR TEST_ID "${TEST_ID} + 1")
+    endif()
+endforeach()

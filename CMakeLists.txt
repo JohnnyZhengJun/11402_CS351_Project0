@@ -10,13 +10,18 @@ add_executable(TwoSumApp src/main.cpp src/twosum.cpp)
 # 3. Isolated Test Runner Executable
 add_executable(two_sum_tests tests/test_runner.cpp src/twosum.cpp)
 
-# 4. Dynamic Test Parser (Now using a robust absolute path)
+# 4. Dynamic Test Parser
 file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/test_cases.txt" TEST_LINES)
 
 set(TEST_ID 1)
 foreach(LINE IN LISTS TEST_LINES)
     if(NOT LINE STREQUAL "")
-        add_test(NAME "TwoSum_Case_${TEST_ID}" COMMAND two_sum_tests ${LINE})
+        # Parse the string's spaces into a proper CMake array (list)
+        separate_arguments(LINE_ARGS UNIX_COMMAND "${LINE}")
+        
+        # Pass the separated arguments to the executable
+        add_test(NAME "TwoSum_Case_${TEST_ID}" COMMAND two_sum_tests ${LINE_ARGS})
+        
         math(EXPR TEST_ID "${TEST_ID} + 1")
     endif()
 endforeach()

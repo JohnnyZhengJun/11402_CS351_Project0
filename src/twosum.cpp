@@ -1,17 +1,19 @@
 #include "twosum.h"
 #include <unordered_map>
-
+#include <vector>
 using namespace std;
 
-vector<int> TwoSumArray(const vector<int>& nums, int target) {
+// Pure function: Brute-force evaluation
+vector<int> TwoSumBruteForce(const vector<int>& nums, int target) {
     for (int i = 0; i < (int)nums.size(); ++i) {
         for (int j = i + 1; j < (int)nums.size(); ++j) {
-            if (nums[i] + nums[j] == target) return {i, j};
+            if (nums[i] + nums[j] == target) {
+                return {i, j};
+            }
         }
     }
     return {};
 }
-
 vector<int> TwoSumHashTable(const vector<int>& nums, int target) {
     unordered_map<int, int> numMap;
     for (int i = 0; i < (int)nums.size(); ++i) {
